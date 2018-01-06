@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+import ListItem from './ListItem'
 
 class MyList extends Component {
   render() {
@@ -7,7 +8,7 @@ class MyList extends Component {
       <div>
         <h1>Stuff to do: </h1>
         <ul>
-          <li></li>
+          <ListItem />
         </ul>
       </div>
     );
