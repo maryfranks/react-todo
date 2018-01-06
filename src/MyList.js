@@ -7,7 +7,8 @@ class MyList extends Component {
   constructor (props) {
     super()
     this.state = {
-      toDoItemArray: props.theList
+      toDoItemArray: props.theList,
+      newItem: ''
     }
   }
 
@@ -16,6 +17,20 @@ class MyList extends Component {
     this.setState({
       toDoItemArray: []
     });
+  }
+
+  newItemChange (e) {
+    this.setState({
+      newItem: e.target.value
+    })
+  }
+
+  addItem (e) {
+    // prevent the button from triggering the form's default submit event.
+    e.preventDefault()
+    var toDos = this.state.toDoItemArray
+    toDos.push(this.state.newItem)
+    this.setState({toDoItemArray: toDos, newItem: ''})
   }
 
   render() {
@@ -28,6 +43,14 @@ class MyList extends Component {
         <ul>
           {todoItems}
         </ul>
+        <form>
+          <input type="text"
+           placeholder="Type an item here"
+           onChange={(e) => this.newItemChange(e)}
+           value={this.state.newItem}
+          />
+          <button onClick={(e) => this.addItem(e)}>Add it!</button>
+        </form>
         <button onClick={(e) => this.clearList(e)}>Finished the list!</button>
       </div>
     );
