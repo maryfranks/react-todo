@@ -12,6 +12,7 @@ class MyList extends Component {
   }
 
   clearList (e) {
+    console.log("Clearing List...");
     this.setState({
       toDoItemArray: []
     });
